@@ -1,0 +1,48 @@
+import java.awt.BorderLayout;
+import java.awt.Container;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
+
+
+public class ChatBox extends JScrollPane {
+    
+    private StyleContext context;
+    private StyledDocument document;
+    private Style style;
+    
+    public ChatBox() {
+        
+        context = new StyleContext();
+        document = new DefaultStyledDocument(context);
+        
+        style = context.getStyle(StyleContext.DEFAULT_STYLE);
+        StyleConstants.setAlignment(style, StyleConstants.ALIGN_LEFT);
+        StyleConstants.setFontSize(style, 14);
+        StyleConstants.setSpaceAbove(style, 4);
+        StyleConstants.setSpaceBelow(style, 4);
+        
+    }
+    
+    public void addMessage(String speaker, String message) {
+        String combinedMessage = speaker + ": " + message;
+        try {
+            document.insertString(document.getLength(), combinedMessage, style);
+        } catch (BadLocationException badLocationException) {
+            System.err.println("Oops");
+        }
+    }
+}
+        
+        

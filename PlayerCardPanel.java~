@@ -1,0 +1,59 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class PlayerCardPanel extends JPanel {
+    
+    private int cardWidth = 50;
+    private int cardHeight = 70;
+    
+    public PlayerCardPanel() {
+        
+        this.setLayout(new FlowLayout());
+        this.setMinimumSize(new Dimension(cardWidth * 2 + 5, cardHeight));
+        this.setOpaque(false);
+        
+        JLabel card1 = new JLabel();
+        JLabel card2 = new JLabel();
+        
+        card1.setMinimumSize(new Dimension(cardWidth, cardHeight));
+        card2.setMinimumSize(new Dimension(cardWidth, cardHeight));
+        
+        this.add(card1);
+        this.add(card2);
+        
+    }
+    
+    public JLabel getCard(int cardNum) {
+        return (JLabel) this.getComponent(cardNum);
+    }
+    
+    public void addCard(JLabel card) {
+        this.add(card);
+    }
+    
+    public void setCard(String filename, int cardNum) {
+        this.getCard(cardNum).setIcon(createScaledImageIcon(filename));
+    }
+    
+    public void removeCard(int cardNum) {
+        this.getCard(cardNum).setVisible(false);
+    }
+    
+    public ImageIcon createImageIcon(String path) {
+        String imagePath = "Poker Table Art\\" + path;
+        java.net.URL imgURL = getClass().getResource(imagePath);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Couldn't find file: " + imagePath);
+            return null;
+        }
+    }
+    
+    public ImageIcon createScaledImageIcon(String filename) {
+        ImageIcon icon = createImageIcon(filename);
+        Image image = icon.getImage().getScaledInstance(cardWidth, cardHeight, Image.SCALE_SMOOTH);
+        icon.setImage(image);
+        return icon;
+    }
+}

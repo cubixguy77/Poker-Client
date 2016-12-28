@@ -1,0 +1,11 @@
+
+public class Payouts {
+  
+  public static double[] getPayouts(int numPlayers, int totalPrizePool) {
+    double[] payouts = new double[3];
+    payouts[0] = (.65 * totalPrizePool);
+    payouts[1] = (.25 * totalPrizePool);
+    payouts[2] = (.10 * totalPrizePool);
+    return payouts;
+  }
+}

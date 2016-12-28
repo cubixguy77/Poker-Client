@@ -1,0 +1,23 @@
+
+public class Logging {
+  
+  public static Boolean approveUser(String username, String password) {
+    
+    Scanner sc = new Scanner(new File(filename));
+    
+    String tempuser;
+    String temppass;
+    
+    Boolean done = false;
+    while (!done) {
+      tempuser = sc.nextString();
+      System.out.println("user: " + tempuser);
+      temppass = sc.nextString();
+      System.out.println("pass: " + temppass);
+      
+      if (user == "end")
+        done = true;
+    }
+    return false;
+  }
+}

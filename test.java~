@@ -1,0 +1,21 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
+
+
+public class test {
+    private int x = 0;
+    public void display() {
+        System.out.println(x);
+        x++;
+    }
+}
+
+
+public class Updater2 extends TimerTask {
+    
+    public void run() {
+        
+        display();
+    }
+}

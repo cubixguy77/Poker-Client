@@ -1,0 +1,42 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class PlayerInfoPanel extends JPanel {
+    
+    public PlayerInfoPanel() {
+        
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setOpaque(false);
+        
+    }
+    
+    public JLabel createJLabel(String text) {
+        JLabel label = new JLabel(text);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return label;
+    }
+    
+    public void addPlayerName(String name) {
+     //   JLabel playerName = new JLabel(name);
+     //   playerName.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(createJLabel(name));
+    }
+    
+    public void addPlayerChipCount(int amount) {
+        Integer i = new Integer(amount);
+  //      JLabel playerChips = new JLabel(i.toString());
+  //      playerChips.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(createJLabel(i.toString()));
+    }
+    
+    public void setPlayerName(String name) {
+       // this.getComponent(0).setText(name);
+        this.add(createJLabel(name), 0);
+       
+    }
+    public void setPlayerChips(int amount) {
+        Integer i = new Integer(amount);
+      //  this.getComponent(1).setText(i.toString());
+        this.add(createJLabel(i.toString()), 1);
+    }
+}

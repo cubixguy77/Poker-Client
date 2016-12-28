@@ -1,0 +1,28 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.*;
+import java.io.*;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.event.*;
+
+
+public class ImageDisplay extends JComponent{
+    Image myPicture;
+    int x=10; int y =10;
+    public void Init() {
+        myPicture = getImage("Poker Table Art/Button.jpeg");
+    }
+    
+    public void paint(Graphics g) {
+          Graphics2D gx = (Graphics2D)g; //cast to graphics 2D
+          g.drawImage(myPicture,x,y,this);
+    }
+    public void main() {
+        Init();
+    }
+}
